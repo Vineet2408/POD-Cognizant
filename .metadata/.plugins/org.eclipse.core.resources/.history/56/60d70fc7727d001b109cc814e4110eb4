@@ -1,0 +1,24 @@
+package com.cts.iptms.model;
+
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class IPTreatmentPackages {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String ailmentCategory;
+	@Embedded
+	PackageDetail packageDetail;
+
+	@Override
+	public String toString() {
+		return "IPTreatmentPackages [id=" + id + ", ailmentCategory=" + ailmentCategory + ", packageDetail="
+				+ packageDetail + "]";
+	}
+}

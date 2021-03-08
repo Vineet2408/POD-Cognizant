@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"
+    isELIgnored="false"
+    %>
+<html>
+<head>
+<%@ include file="headlink.jsp"%>
+
+<title></title>
+</head>
+<body>
+	<div class="container-fluid">
+		<%@ include file="header.jsp"%>
+		</br>
+		<!-- header............................................................................................. -->
+	
+		
+		
+		<!-- main ended here -->
+	</div>
+</body>
+</html>

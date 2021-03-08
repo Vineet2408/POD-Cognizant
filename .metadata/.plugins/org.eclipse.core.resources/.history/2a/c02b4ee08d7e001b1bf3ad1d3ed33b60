@@ -1,0 +1,27 @@
+package com.cts.portal.service;
+
+import java.util.List;
+
+import com.cts.portal.model.PatientDetail;
+import com.cts.portal.model.TreatmentPlan;
+
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
+
+public interface IPTMSPatientInterface 
+{
+	@GET("/patient/{ptId}")
+	public Call<PatientDetail> getPatient(@Path("ptID") long ptId);
+	
+	@GET("/getplan/{ptId}")
+	public Call<TreatmentPlan> getTreatmentPlan(@Path("ptID") long ptId );
+
+	@POST("/formTimeTable")
+	public Call<TreatmentPlan> addPatient(@Body PatientDetail pd);
+	
+	@GET("/getAllTreatmentPlans")
+	public Call<List<TreatmentPlan>> getAllTreatmentPlans();
+}

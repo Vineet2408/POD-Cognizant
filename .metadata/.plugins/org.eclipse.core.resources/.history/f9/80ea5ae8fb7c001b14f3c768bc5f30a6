@@ -1,0 +1,19 @@
+package com.cts.portal;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+@SpringBootApplication
+@ComponentScan(basePackages = "com.baeldung.componentscan.springapp")
+public class PortalApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PortalApplication.class, args);
+		GetSpecialist gs=new GetSpecialist();
+		System.out.println("before   -----------------------------------------------------------------------");
+		SpecialistDetail sd=gs.get();
+		System.out.println(sd.toString());
+	}
+
+}

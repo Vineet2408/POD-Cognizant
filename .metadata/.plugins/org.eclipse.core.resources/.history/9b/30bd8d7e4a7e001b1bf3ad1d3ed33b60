@@ -1,0 +1,8 @@
+package com.cts.portal.model.controllers;
+
+public class IPTMSInsurance
+{
+	@GetMapping()
+	
+
+}

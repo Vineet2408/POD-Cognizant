@@ -1,0 +1,49 @@
+package com.cts.portal.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.cts.portal.model.IPTreatmentPackages;
+import com.cts.portal.model.PackageDetail;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class IPTMSOfferingsService
+{
+	private static final String BASEURL="http://localhost:8080"; 
+	PackageDetail packageDetail = null;
+	List<IPTreatmentPackages> iPTreatmentPackagesList=null;
+	
+	OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+	
+	Retrofit retrofit = new Retrofit.Builder()
+	  .baseUrl(BASEURL)
+	  .addConverterFactory(GsonConverterFactory.create())
+	  .client(httpClient.build())
+	  .build();
+	
+	public PackageDetail getPackageDetail()
+	{
+		
+		return packageDetail;
+	}
+	public List<IPTreatmentPackages> getIPTreatmentPackagesList()
+	{
+		iPTreatmentPackagesList=new ArrayList<IPTreatmentPackages>();
+		IPTMSOfferingInterface service = retrofit.create(IPTMSOfferingInterface.class);
+		
+		Call<List<IPTreatmentPackages>> callsync=service.getIPTPackagesList();
+		try {
+		    Response<List<IPTreatmentPackages>> response = callsync.execute();
+		    List<IPTreatmentPackages> list = response.body();
+		    iPTreatmentPackagesList=list;
+		} catch (Exception ex) { System.out.println("error"); }
+		
+		return iPTreatmentPackagesList;
+	}
+
+}

@@ -1,0 +1,16 @@
+package com.cts.portal.service;
+
+import retrofit2.http.GET;
+
+public interface IPTMSPatientInterface 
+{
+	@GET("/getPatient/{ptId}")
+	public PatientDetail getPatient(@PathVariable long ptId, @RequestHeader("Authorization") String token ){
+		iptService.validateToken(token);
+		return iptService.getPatient(ptId);
+	}
+	
+	@GET("/getplan/{ptId}")
+	public TreatmentPlan getAPlan(@Path("ptID") int ptId );
+
+}

@@ -1,0 +1,67 @@
+package com.cts.portal.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.cts.portal.model.InitiateClaim;
+import com.cts.portal.model.InsurerDetail;
+
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+@Service
+public class IPTMSInsuranceService 
+{
+	private final String BASEURL="http://localhost:8082"; 
+	InsurerDetail insurerDetail = null;
+	List<InsurerDetail> insurerDetailList=null;
+	
+	OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+	
+	Retrofit retrofit = new Retrofit.Builder()
+	  .baseUrl(BASEURL)
+	  .addConverterFactory(GsonConverterFactory.create())
+	  .client(httpClient.build())
+	  .build();
+	public List<InsurerDetail> getAllInsurerDetail()
+	{
+		IPTMSInsuranceService insuranceService = retrofit.create(IPTMSInsuranceService.class);
+		Call<List<InsurerDetail>> callsync=(Call<List<InsurerDetail>>) insuranceService.getAllInsurerDetail();
+		try {
+		    Response<List<InsurerDetail>> response = callsync.execute();
+		    List<InsurerDetail> insurerDetailBean = response.body();
+		    insurerDetailList=insurerDetailBean;
+		} catch (Exception ex) { System.out.println("error in IPTreatmentPackages list"); }
+		
+		return insurerDetailList;
+	}
+	public InsurerDetail getInsurerDetailByPackageName(String packageName)
+	{
+		IPTMSInsuranceService insuranceService = retrofit.create(IPTMSInsuranceService.class);
+		Call<InsurerDetail> callsync=(Call<InsurerDetail>) insuranceService.getInsurerDetailByPackageName(packageName);
+		try {
+		    Response<InsurerDetail>response = callsync.execute();
+		    InsurerDetail insurerDetailBean = response.body();
+		    insurerDetail=insurerDetailBean;
+		} catch (Exception ex) { System.out.println("error in IPTreatmentPackages list"); }
+		
+		return insurerDetail;
+	}
+	public double initiateClaim(InitiateClaim claim)
+	{
+		IPTMSInsuranceService insuranceService = retrofit.create(IPTMSInsuranceService.class);
+		Call<Double> callsync= insuranceService.initiateClaim(claim);
+		try {
+		    Response<InsurerDetail>response = callsync.execute();
+		    InsurerDetail insurerDetailBean = response.body();
+		    insurerDetail=insurerDetailBean;
+		} catch (Exception ex) { System.out.println("error in IPTreatmentPackages list"); }
+		
+		return insurerDetail;
+	}
+
+}

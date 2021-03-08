@@ -1,0 +1,113 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"
+    isELIgnored="false"
+    %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<html>
+<head>
+
+<title>Home</title>
+</head>
+<body>
+	<div class="container-fluid">
+	<%@ include file="header.jsp"%>
+	</br>
+	<!-- header............................................................................................. -->
+	
+	 
+<div class="container-fluid justify-content-center" id="heading">
+    <div class="card justify-content-center">
+        <h1 class="text-center">Get Fit  & Get Back to Healthy Life</h1>
+
+    </div>
+
+</div>
+    <div class="container-fluid">
+            <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <h4>Our International Treatment Packages</h4>
+                        </div>
+                        
+                            <div class="container" name="treatment-packages">
+                                <!--start loop here-->
+                                <c:foreach var="IPTreatmentPackages" items="${ iPTreatmentPackageLiist}">
+                                <div class="row" name="main-row-treatment-packages">
+                                    <div class="col">
+                                        <div class="card" >
+                                            <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-4" name="treatment-ailment-name">
+                                                            <label>${IPTreatmentPackages.ailmentCategory}</label>
+                                                        </div>
+                                                        <div class="col-md-4" name="treatment-package-name">
+                                                            <label>${IPTreatmentPackages.packageDetail.treatmentPackageName}</label>
+                                                        </div>
+                                                        <div class="col-md-4" name="treatment-package-cost">
+                                                            <label>${IPTreatmentPackages.packageDetail.cost}</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6" name="treatment-package-test-detail">
+                                                            <label>${IPTreatmentPackages.packageDetail.testDetails}</label>
+                                                        </div>
+                                                        <div class="col-md-6" name="treatment-package-treatment-duration">
+                                                            <div class="card">
+                                                                <label>Treatment Duration</label></br>
+                                                                ${IPTreatmentPackages.packageDetail.treatmentDuration}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </c:foreach>
+                                  <!--end loop here-->
+                                  
+                            </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <h4>Our Specialists</h4>
+                        </div>
+                       
+                        <div class="container" name="specialists">
+                            <!--start loop here-->
+                            <div class="row" name="main-row-specialist">
+                                <div class="col">
+                                    <div class="card" >
+                                        <div class="container">
+                                                <div class="row">
+                                                    <div class="col-md-6" name="specialist--name">
+                                                        <label>UTSAV</label>
+                                                    </div>
+                                                    <div class="col-md-6" name="experience-cost">
+                                                        <label>5 years of Experience</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6" name="area-of-experties">
+                                                        <div class="card">
+                                                            <label>Area of Experties</label></br>
+                                                            Orthopedics
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           <!--end loop here-->
+                        </div>
+                    </div>
+                   
+
+            </div>
+    </div>
+
+	</div>
+</body>
+</html>

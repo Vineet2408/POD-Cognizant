@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Insurance</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div class="jumbotron-fluid bg-danger text-white">
+                <nav class="navbar navbar-expand-md navbar-dark bg-primary text-white justify-content-center" id="navbar" >
+                    <a href="IPPackagesview.html" class="navbar-brand"><i class="material-icons">bloodtype</i>International Patient Treatment Management Service</a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#truyumbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="container">
+                        <div class="collapse navbar-collapse" id="truyumbar">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item"><a href="/patients" class="nav-link">Patients</a></li>
+                                <li class="nav-item"><a href="/insuranceClaim" class="nav-link">Insurance Claim</a></li>
+                                <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+             </div>
+  
+    
+        </header>
+
+        <div class="container-fluid justified-content-center">
+            <div class="card">
+                <h1 class="text-center">Applications for Insurance Claim</h1>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- loop here -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <h5>Name of Patient</h5>
+                                        Utsav
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <h5>Ailment</h5>
+                                        orthopedics
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <h5>Treatment Package</h5>
+                                        Package 1
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <h5>Cost</h5>
+                                        30000
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- the patient details row ended here-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="card">
+                                   <a href="/selectInsurance" class="btn-danger">Select Insurance</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end the loop here-->
+            </div>
+        </div>
+    </body>
+</html>

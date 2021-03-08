@@ -1,0 +1,65 @@
+package com.cts.portal.model.controllers;
+
+import java.util.List;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.cts.portal.model.InitiateClaim;
+import com.cts.portal.model.InsurerDetail;
+import com.cts.portal.model.TreatmentPlan;
+import com.cts.portal.service.IPTMSInsuranceService;
+import com.cts.portal.service.IPTMSPatientService;
+
+@Controller
+@RequestMapping("/insurance")
+public class IPTMSInsuranceController
+{
+	@Autowired
+	IPTMSInsuranceService service;
+	@Autowired
+	IPTMSPatientService patientService;
+	@GetMapping
+	public String getAllInsurerDetail() {
+	
+		 
+		 return "insurance";
+	}
+	@GetMapping("/{packageName}")
+	public InsurerDetail getInsurerDetailByPackageName(@PathVariable String packageName)  {
+	
+		return service.getInsurerDetailByPackageName(packageName);
+	}
+	
+	@PostMapping
+	public double initiateClaim(@RequestBody InitiateClaim initiateClaim)
+	{
+
+		return service.initiateClaim(initiateClaim);
+	}
+	@GetMapping("/viewApplications")
+	public String viewApplication()
+	{
+		List<TreatmentPlan> treatmentPlanList=patientService.getAllTreatmentPlan();
+		return "PatientForInsuranceClaim";
+	}
+	@GetMapping("/viewAllPackages")
+	public String viewAllPackages(ModelMap map)
+	{
+		List<InsurerDetail> list=service.getAllInsurerDetail();
+		map.put("insurancePackagesList", list);
+		return "InsurancePackages";
+	}
+	
+
+	
+
+}

@@ -1,0 +1,53 @@
+package com.cognizant.iptm.model;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.stereotype.Component;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Component
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class TreatmentPlan {
+
+	@NotNull
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long treatmentPlanId;
+	
+	@ManyToOne( fetch = FetchType.EAGER, targetEntity = PatientDetail.class)
+	@JoinColumn(name = "tp_pt_id")
+	private PatientDetail patientDetail;
+	private String packageName;
+	private String testDetail;
+	private String status;
+	private double cost;
+	private String specialist;
+	private Date treatmentCommencementDate;
+	private Date treatmentEndDate;
+
+	@Override
+	public String toString() {
+		return "TreatmentPlan [treatmentPlanId=" + treatmentPlanId + ", patientDetail=" + patientDetail
+				+ ", packageName=" + packageName + ", testDetail=" + testDetail + ", status=" + status + ", cost="
+				+ cost + ", specialist=" + specialist + ", treatmentCommencementDate=" + treatmentCommencementDate
+				+ ", treatmentEndDate=" + treatmentEndDate + "]";
+	}
+
+}

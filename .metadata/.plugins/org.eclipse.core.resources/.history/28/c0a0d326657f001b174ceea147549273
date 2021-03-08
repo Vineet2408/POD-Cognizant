@@ -1,0 +1,9 @@
+server.port=8090
+spring.mvc.view.prefix=/WEB-INF/view/
+spring.mvc.view.suffix=.jsp
+
+spring.jackson.date-format=yyyy-MM-dd
+
+spring.jackson.serialization.write-dates-as-timestamps:false
+
+spring.jackson.time-zone:IST

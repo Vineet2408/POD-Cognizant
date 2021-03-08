@@ -1,0 +1,26 @@
+package com.cts.portal.service;
+
+import java.util.List;
+
+import com.cts.portal.model.InsurerDetail;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
+public interface IPTMSInsuranceInterface 
+{
+	@GET("/insurance-claim")
+	public Call<List<InsurerDetail>> getAllInsurerDetail();
+		
+	@GET("/insurance-claim/{packageName}")
+	public InsurerDetail getInsurerDetailByPackageName(@PathVariable String packageName);
+		
+	@POST
+	public double initiateClaim(@RequestBody @Valid InitiateClaim initiateClaim)
+	{
+		LOGGER.info("START");
+		LOGGER.info("END");
+		return insuranceClaimService.initiateClaim(initiateClaim);
+	}
+}

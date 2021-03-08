@@ -1,0 +1,19 @@
+package com.cts.iptms.model;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class PackageDetail {
+
+	private String treatmentPackageName;
+	private String testDetails;
+	private int cost;
+	private int treatmentDuration;
+
+	@Override
+	public String toString() {
+		return "PackageDetail [treatmentPackageName=" + treatmentPackageName + ", testDetails=" + testDetails
+				+ ", cost=" + cost + ", treatmentDuration=" + treatmentDuration + "]";
+	}
+
+}

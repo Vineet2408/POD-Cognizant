@@ -1,0 +1,18 @@
+package com.cts.portal.service;
+
+
+import com.cts.portal.model.PatientDetail;
+import com.cts.portal.model.TreatmentPlan;
+
+import retrofit2.http.GET;
+import retrofit2.http.Path;
+
+public interface IPTMSPatientInterface 
+{
+	@GET("/getPatient/{ptId}")
+	public PatientDetail getPatient(@Path("ptID") long ptId);
+	
+	@GET("/getplan/{ptId}")
+	public TreatmentPlan getTreatmentPlan(@Path("ptID") int ptId );
+
+}

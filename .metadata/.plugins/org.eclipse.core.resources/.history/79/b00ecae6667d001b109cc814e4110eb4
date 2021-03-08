@@ -1,0 +1,10 @@
+package com.cts.portal;
+
+import retrofit2.Call;
+import retrofit2.http.GET;
+
+public interface SpecialistInterface {
+
+	@GET("/specialist")
+    public Call<SpecialistDetail> getUser();
+}

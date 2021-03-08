@@ -1,0 +1,14 @@
+package com.cts.portal.model;
+
+import java.util.Date;
+
+public class SamplePatient 
+{
+	private long id;
+	private String name;
+	private int age;
+	private String ailment;
+	private String treatmentPackage;
+	private Date treatmentCommencementDate;
+
+}

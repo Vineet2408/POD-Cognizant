@@ -1,0 +1,20 @@
+body {
+            background-image: url("profile4.jpeg");
+            background-repeat: no-repeat;
+            height: 100%;
+            background-size: cover;
+            background-position:center;
+        }
+        .card-deck {
+            padding-top: 30px;
+            margin:auto;
+        }
+        #balancebox, #balancediv {
+            background-color: #009ACD;
+                color:white;
+        }
+        
+        .detail{
+            float:right;
+        }
+       

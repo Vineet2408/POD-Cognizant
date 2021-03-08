@@ -1,0 +1,5 @@
+package com.cts.authorization.controller;
+
+public class AuthenticationController {
+
+}

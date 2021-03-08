@@ -1,0 +1,66 @@
+package com.cts.portal;
+
+
+import okhttp3.OkHttpClient;
+import retrofit2.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.converter.gson.GsonConverterFactory;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class GetSpecialist
+{
+	 SpecialistDetail mainuser=null;
+	public SpecialistDetail get()
+	{
+		System.out.println("inside--------------------------------------------------------");
+		OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+		Retrofit retrofit = new Retrofit.Builder()
+		  .baseUrl("http://localhost:8080/")
+		  .addConverterFactory(GsonConverterFactory.create())
+		  .client(httpClient.build())
+		  .build();
+		
+		System.out.println("inside   222--------------------------------------------------------");
+
+		SpecialistInterface service = retrofit.create(SpecialistInterface.class);
+		Call<SpecialistDetail> callAsync = service.getUser();
+		System.out.println("inside 3333--------------------------------------------------------");
+
+		Call<SpecialistDetail> callSync = service.getUser();
+		try {
+		    Response<SpecialistDetail> response = callSync.execute();
+		    SpecialistDetail user = response.body();
+		    mainuser=user;
+		} catch (Exception ex) { System.out.println("erorororororororororororororororor"); }
+		/*callAsync.enqueue(new Callback<SpecialistDetail>() {
+		    @Override
+		    public void onResponse(Call<SpecialistDetail> call, Response<SpecialistDetail> response) {
+		    	System.out.println("inside enqueue--------------------------------------------------------------------------");
+		    	SpecialistDetail user = response.body();
+		    	System.out.println("inside enqueue1--------------------------------------------------------------------------");
+
+		    	mainuser=user;
+		    	System.out.println("inside enqueue2--------------------------------------------------------------------------");
+
+		    }
+
+		    @Override
+		    public void onFailure(Call<SpecialistDetail> call, Throwable throwable) {
+		    	System.out.println("erroooooooooooooooooooooooooooooooooooooorrrrrrrrrrrrrrrrroooooooooooorrrrrrrrrr");
+		        System.out.println(throwable);
+		    }
+		});
+    	System.out.println("after enqueue4--------------------------------------------------------------------------");
+
+		if(mainuser!=null)
+		System.out.println(mainuser.toString());
+    	System.out.println("after4 enqueue--------------------------------------------------------------------------");
+*/
+		return mainuser;
+	}
+
+}
